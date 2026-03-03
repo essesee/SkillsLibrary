@@ -1,6 +1,6 @@
 ---
 name: customer-signal-scanner
-description: "Scan Gmail and Slack for customer, partner, and AAA club escalations and complaints. Surfaces external-facing pain signals with structured evidence. Works standalone for ad-hoc customer signal checks or in orchestrated mode when called by problem-discoverer. Trigger on phrases like 'scan for customer issues,' 'any customer escalations,' 'what are customers complaining about,' 'check for partner issues,' 'AAA club complaints,' 'customer signal scan,' 'external escalations,' 'club feedback,' or any request to surface what external stakeholders are reporting."
+description: "Scan Gmail and Slack for customer, partner, and customer organization escalations and complaints. Surfaces external-facing pain signals with structured evidence. Works standalone for ad-hoc customer signal checks or in orchestrated mode when called by problem-discoverer. Trigger on phrases like 'scan for customer issues,' 'any customer escalations,' 'what are customers complaining about,' 'check for partner issues,' 'customer complaints,' 'customer signal scan,' 'external escalations,' 'customer feedback,' or any request to surface what external stakeholders are reporting."
 ---
 
 # Customer Signal Scanner
@@ -17,7 +17,7 @@ Customer and partner pain doesn't always arrive as a formal bug report or Jira t
 ## Inputs
 - **Time window** (optional): how far back to scan (default: 30 days)
 - **Channels/sources** (optional): specific Slack channels or Gmail labels to target (default: all customer-facing channels)
-- **Focus area** (optional): narrow to a specific feature, product area, or club
+- **Focus area** (optional): narrow to a specific feature, product area, or customer organization
 - **Orchestrated mode flag** (optional): `called_by_problem_discoverer = true` — returns structured signal list, no interactive review. Default: `false`
 
 ## Outputs
@@ -55,17 +55,17 @@ Customer raised an issue and received no resolution in the thread.
 - Patterns: customer message with question/complaint, no follow-up resolution, thread age > 3 days
 - Severity: complaint
 
-### Club-Specific Patterns
-Problems affecting specific AAA clubs vs. federation-wide issues.
-- Patterns: club name + issue keywords, multiple issues from same club
-- Note: federation-wide patterns score higher than single-club issues
+### Customer-Specific Patterns
+Problems affecting specific customer organizations vs. platform-wide issues.
+- Patterns: customer name + issue keywords, multiple issues from same customer
+- Note: platform-wide patterns score higher than single-customer issues
 
 ## Output Format (per signal)
 
 ```
 - signal_summary: string (what's the issue, in one sentence)
 - source: { type: Gmail|Slack, channel/thread: string, date: date }
-- reporter: string (which customer/partner/club)
+- reporter: string (which customer/partner/organization)
 - frequency: first|recurring (count)
 - severity: escalation|complaint|mention|informational
 - related_signals: [references to other signals about the same issue]
@@ -78,19 +78,19 @@ Problems affecting specific AAA clubs vs. federation-wide issues.
 - Set time window (default: 30 days)
 - Identify channels and sources to scan:
   - Slack: support channels, customer-facing channels, escalation channels
-  - Gmail: customer correspondence, partner emails, club communication
+  - Gmail: customer correspondence, partner emails, customer organization communication
 - Set orchestrated mode flag if called by problem-discoverer
 - Load `references/customer-signal-patterns.md` for learned patterns
 
 ### Step 2: Scan
 - Pull messages from relevant Slack channels and Gmail threads within time window
 - Process in batches. Extract signal-relevant content; drop raw message content after classification.
-- For Gmail: search for threads with customer/partner/club senders, escalation keywords
+- For Gmail: search for threads with customer/partner/organization senders, escalation keywords
 - For Slack: search channels for complaint patterns, escalation language, unresolved questions
 
 ### Step 3: Classify
 Apply signal type detection to each message/thread:
-- Match against signal type patterns (Direct Escalations, Repeated Issues, Severity Indicators, Unresolved Threads, Club-Specific)
+- Match against signal type patterns (Direct Escalations, Repeated Issues, Severity Indicators, Unresolved Threads, Customer-Specific)
 - Assign severity: escalation / complaint / mention / informational
 - Assign confidence: high (clear escalation language) / medium (likely complaint) / low (possible signal, ambiguous)
 

@@ -9,9 +9,9 @@ description: "Build and maintain shared domain vocabulary by scanning GitHub rep
 Build and enforce a shared vocabulary between business stakeholders, documentation, and code. When the code says "TravelProduct" but Jira says "Offering" and Confluence says "Package" — that's a bug in the language, and it causes real bugs in the system.
 
 ## Dependencies
-- **GitHub** (`Travel-Syndication-Technology` org) — scan code for class names, variable names, API field names, enum values
-- **Confluence** (`tstllc.jira.com`) — scan docs for business terminology, spec language, glossaries
-- **Jira** (`tstllc.jira.com`) — scan tickets for how the team describes domain concepts
+- **GitHub** — scan code for class names, variable names, API field names, enum values
+- **Confluence** — scan docs for business terminology, spec language, glossaries
+- **Jira** — scan tickets for how the team describes domain concepts
 - **domain-modeler** — call when terminology confusion reveals a bounded context problem
 
 ## Context Gathering (Always Do First)
@@ -104,11 +104,6 @@ For a single naming question ("should we call this X or Y?"):
 - If the recommended term requires code changes, estimate the blast radius (how many files/repos)
 - Cross-reference with bounded contexts — the same real-world thing can legitimately have different names in different contexts
 - Flag when customer/partner-facing terms differ from internal terms (this matters for APIs)
-
-## TST Context
-- "Agent" = AAA club agent (human), never AI agent
-- Travel data terminology may follow industry standards — check before inventing terms
-- The Platform serves multiple AAA clubs — terminology should be consistent across the federation
 
 ## Context Rules
 - No reference files needed — this skill is procedural

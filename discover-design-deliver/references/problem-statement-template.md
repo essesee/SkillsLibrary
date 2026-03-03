@@ -27,9 +27,9 @@ For each affected persona, describe the impact in their terms:
 
 | Persona | Impact |
 |---------|--------|
-| Tricia (Travel Agent) | How this problem affects their daily workflow |
-| TST Support | How this problem creates support burden |
-| TST Back Office | How this problem affects operations |
+| End Users | How this problem affects their daily workflow |
+| Support Team | How this problem creates support burden |
+| Back Office | How this problem affects operations |
 | Engineering Teams | How this problem affects system reliability or development |
 
 Include only personas with real impact. Don't pad.
@@ -74,7 +74,7 @@ Why 1: [Direct benefit of fixing root cause]
         Why 5: [Strategic value]
 ```
 
-Each level must connect logically. The top level should tie to TST's strategic goals ("One Platform, One Source of Truth").
+Each level must connect logically. The top level should tie to your organization's strategic goals.
 
 ### Conclusion
 Three to five sentences connecting:
@@ -83,13 +83,13 @@ Three to five sentences connecting:
 3. The impact (who it hurts and how much)
 4. The strategic case (why it matters now)
 
-> **style-editor-expanded checkpoint**: Apply the six-pass edit to the full document. This goes to the TST Product Team and Working Group — every sentence must earn its place.
+> **style-editor-expanded checkpoint**: Apply the six-pass edit to the full document. This goes to the product team and working group — every sentence must earn its place.
 
 > **priority-format-calibrator checkpoint**: Is the document's depth proportional to the problem's scope? A narrow bug fix needs a lighter problem statement than a platform initiative.
 
 ---
 
 ## Approval
-- **Reviewers**: TST Product Team, TST Working Group
+- **Reviewers**: Product team, working group
 - **Gate**: Approved Problem Statement initiates Design phase
 - **On approval**: Product Manager moves the Idea from Research to Discovery in Jira

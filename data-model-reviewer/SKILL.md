@@ -6,12 +6,12 @@ description: "Review data models and schemas against Universal Business Language
 # Data Model Reviewer
 
 ## Purpose
-Review and design data models against UBL patterns and travel industry standards. Ensures TST's data exchange formats are well-structured, standards-aligned, and maintainable. Grounded in what actually exists in the codebase.
+Review and design data models against UBL patterns and industry standards. Ensures your data exchange formats are well-structured, standards-aligned, and maintainable. Grounded in what actually exists in the codebase.
 
 ## Dependencies
-- **GitHub** (`Travel-Syndication-Technology` org) — search for existing schemas, data models, API contracts
-- **Confluence** (`tstllc.jira.com`) — search for data specs, integration docs, partner requirements
-- **Jira** (`tstllc.jira.com`) — search for data-related bugs, schema change requests, integration issues
+- **GitHub** — search for existing schemas, data models, API contracts
+- **Confluence** — search for data specs, integration docs, partner requirements
+- **Jira** — search for data-related bugs, schema change requests, integration issues
 - **api-composer** — call when the review reveals composition problems between services
 - **ubiquitous-language-builder** — call when field naming is inconsistent
 
@@ -119,12 +119,6 @@ Load `references/ubl-travel-patterns.md` for the full reference. Key patterns:
 - If recommending UBL alignment, show the practical benefit — don't standardize for standardization's sake
 - Flag where existing schemas diverge from each other across repos
 - If a provider sends non-standard data, recommend an anticorruption layer rather than polluting internal models
-
-## TST Context
-- Travel data flows: external providers → TST core services → AAA clubs
-- Each hop is an opportunity for data loss or format mismatch
-- The agent app consumes data — its needs drive the internal model
-- Multiple AAA clubs may have different data requirements
 
 ## Context Rules
 - Load `references/ubl-travel-patterns.md` only when this skill triggers

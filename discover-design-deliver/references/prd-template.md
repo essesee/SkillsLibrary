@@ -8,7 +8,7 @@ This template produces a formal deliverable for stakeholder approval. Follow thi
 2. **During Goals and Recommendations** — Run `mental-models` to stress-test. Inversion: how could this fail? Second-Order Thinking: what happens after the first effect? Probabilistic Thinking: are the success metrics realistic?
 3. **During Background Research** — Apply Chesterton's Fence (`mental-models`): understand why existing systems work the way they do before proposing changes.
 4. **After drafting** — Run `output-consistency-reviewer` across the full document. Check that recommendations serve stated goals, success metrics actually measure those goals, and requirements don't contradict each other.
-5. **Final edit** — Run `style-editor-expanded` in editing mode. This goes to the TST Advisory Group — apply all six passes.
+5. **Final edit** — Run `style-editor-expanded` in editing mode. This goes to the advisory group — apply all six passes.
 6. **Format check** — Run `priority-format-calibrator` to calibrate depth per section. Executive summary should be scannable. Technical requirements need precision. Don't over-format simple sections or under-format complex ones.
 
 ---
@@ -45,9 +45,9 @@ For each affected persona, show the before and after:
 
 | Persona | Before (Current State) | After (With Solution) |
 |---------|----------------------|---------------------|
-| Tricia (Travel Agent) | Current pain point | How their workflow improves |
-| TST Support | Current burden | How support load changes |
-| TST Back Office | Current process gap | How operations improve |
+| End Users | Current pain point | How their workflow improves |
+| Support Team | Current burden | How support load changes |
+| Back Office | Current process gap | How operations improve |
 | Engineering Teams | Current technical pain | How development experience changes |
 
 > **output-consistency-reviewer checkpoint**: Does "After" for each persona actually follow from the Recommendations section below? If the solution doesn't deliver the claimed persona impact, something is misaligned.
@@ -92,7 +92,7 @@ How the system must perform. Include:
 What we need to measure to validate success. Map each analytic to a Goal above.
 
 #### Back Office Requirements
-What TST Support and Back Office need to operate the feature. Admin tools, config options, escalation paths.
+What the Support Team and Back Office need to operate the feature. Admin tools, config options, escalation paths.
 
 #### Success Metrics
 Quantitative measures tied to Goals. Include:
@@ -105,7 +105,7 @@ Quantitative measures tied to Goals. Include:
 
 #### Rollout Plan
 How we ship this. Include:
-- Phased rollout strategy (which clubs first, feature flags, etc.)
+- Phased rollout strategy (which customer organizations first, feature flags, etc.)
 - Rollback criteria
 - Communication plan for affected users
 
@@ -138,5 +138,5 @@ Before submitting for approval, verify:
 - [ ] `priority-format-calibrator` — Depth matches complexity per section
 
 ## Approval
-- **Reviewers**: TST Advisory Group, TST Product Team
+- **Reviewers**: Advisory group, product team
 - **Gate**: Approved PRD initiates Develop/Deliver phases

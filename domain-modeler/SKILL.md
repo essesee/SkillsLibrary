@@ -10,15 +10,15 @@ Apply Domain-Driven Design to model complex domains, identify clean service boun
 
 ## Dependencies
 - **ubiquitous-language-builder** — call when terminology needs alignment before or during modeling
-- **GitHub** (`Travel-Syndication-Technology` org) — search repos for existing code, schemas, service boundaries
-- **Confluence** (`tstllc.jira.com`) — search for domain specs, architecture docs, decision records
-- **Jira** (`tstllc.jira.com`) — search for feature context, requirements, domain discussions
+- **GitHub** — search repos for existing code, schemas, service boundaries
+- **Confluence** — search for domain specs, architecture docs, decision records
+- **Jira** — search for feature context, requirements, domain discussions
 
 ## Context Gathering (Always Do First)
 
 Before any modeling, gather real context. Run these searches in parallel:
 
-1. **GitHub**: Search the `Travel-Syndication-Technology` org for:
+1. **GitHub**: Search your organization's repos for:
    - Existing service/repo names that map to domain concepts (`gh search repos`, `gh search code`)
    - Schema definitions, data models, entity classes
    - API contracts and integration points between services
@@ -97,12 +97,6 @@ For a single design question ("should X and Y be in the same bounded context?"):
 - If the recommendation conflicts with the current system, provide a migration path
 - Flag where the code structure diverges from the domain model found in docs/tickets
 - Surface terminology mismatches between code, Jira, and Confluence
-
-## TST Context
-- The Platform encompasses the agent app and core services (APIs, audit log)
-- AAA clubs are customers with distinct operational needs
-- "Agent" means AAA club agent (human), not a software agent
-- Travel data flows from external providers into TST's systems and out to clubs
 
 ## Context Rules
 - Load `references/ddd-patterns.md` only when this skill triggers

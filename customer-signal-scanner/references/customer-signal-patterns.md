@@ -18,4 +18,4 @@ _(Which Slack channels and Gmail sources consistently produce actionable signals
 
 ## Recurring Reporters
 
-_(Customers/clubs that frequently surface real issues — high-signal reporters)_
+_(Customers/organizations that frequently surface real issues — high-signal reporters)_

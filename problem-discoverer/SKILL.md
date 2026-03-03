@@ -9,11 +9,11 @@ description: "Proactively discover platform problems by orchestrating signal sou
 Problems don't announce themselves cleanly. They emerge as scattered signals — a spike in errors, repeated customer complaints, engineers working around the same friction, vendor APIs degrading quietly. This skill orchestrates existing tools and signal sources to surface platform problems worth solving, ranks them by evidence strength and strategic alignment, and hands off validated findings to the 4D process for formal Problem Statements.
 
 ## Team Scope
-**All queries are scoped to `Team = "Platform"`.** Only Platform-owned signals are gathered and analyzed.
+**All queries are scoped to your team's Jira filter.** Only team-owned signals are gathered and analyzed.
 
 ## Dependencies
 - **Signal scanner skills:**
-  - `customer-signal-scanner` — external customer/partner/AAA club escalations
+  - `customer-signal-scanner` — external customer/partner escalations
   - `team-signal-scanner` — internal engineering pain, support patterns
   - `vendor-signal-scanner` — vendor/provider communication issues
 - **Analysis skills:**
@@ -28,8 +28,8 @@ Problems don't announce themselves cleanly. They emerge as scattered signals —
 - **Handoff:**
   - `discover-design-deliver` — receives evidence packages for Problem Statements
 - **Data sources:**
-  - Jira (`tstllc.jira.com`) — existing tickets, epics, Problem Statements
-  - Confluence (`tstllc.jira.com`) — specs, retrospectives, incident reports
+  - Jira — existing tickets, epics, Problem Statements
+  - Confluence — specs, retrospectives, incident reports
   - PostHog — usage data, error rates, funnel metrics
 - **Reference files** (loaded at Step 1):
   - `references/signal-scoring.md` — composite scoring rubric
@@ -118,7 +118,7 @@ Merge and analyze all signals from Step 3:
    - Evidence Breadth (0.25) — how many source categories contribute?
    - Evidence Depth (0.20) — how strong is the evidence within each source?
    - Persona Impact (0.20) — which personas are affected, how severely?
-   - Strategic Alignment (0.15) — does this connect to "One Platform, One Source of Truth" or other strategic priorities?
+   - Strategic Alignment (0.15) — does this connect to your team's strategic priorities?
    - Trend (0.10) — getting worse, stable, or improving?
    - Actionability (0.10) — can we realistically address this?
 4. **Sharpen framing**: For top candidates, use `mental-models` to stress-test the problem framing (First Principles, Inversion, Second-Order Thinking)
@@ -131,7 +131,7 @@ Per candidate:
 - **Problem summary**: 1-2 sentence description of the underlying problem
 - **Composite score**: numeric score with factor breakdown
 - **Evidence summary**: which sources contributed, key data points
-- **Affected personas**: Tricia, TST Support, TST Back Office, Engineering Teams
+- **Affected personas**: End Users, Support Team, Back Office, Engineering Teams
 - **Trend**: getting worse / stable / improving (with supporting data)
 - **Strategic alignment**: connection to platform strategy
 - **Similar known issues**: any partial overlap with Step 2 baseline

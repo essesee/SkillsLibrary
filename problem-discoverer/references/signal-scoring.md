@@ -46,13 +46,13 @@ Which personas are affected, how many, and how severely?
 | 1 | Cosmetic or negligible impact |
 
 **Persona weights** (for tie-breaking):
-- Tricia (Travel Agent): 1.0 — primary end user
-- TST Support: 0.9 — direct customer contact
-- TST Back Office: 0.7 — internal operations
+- End Users: 1.0 — primary end user
+- Support Team: 0.9 — direct customer contact
+- Back Office: 0.7 — internal operations
 - Engineering Teams: 0.6 — internal efficiency
 
 ### Strategic Alignment (weight: 0.15)
-Does this connect to platform strategy ("One Platform, One Source of Truth") or current roadmap priorities?
+Does this connect to product/platform strategy or current roadmap priorities?
 
 | Score | Criteria |
 |-------|----------|
@@ -78,11 +78,11 @@ Can we realistically address this with current team capacity and authority?
 
 | Score | Criteria |
 |-------|----------|
-| 5 | Fully within Platform team's control; clear solution path; reasonable scope |
+| 5 | Fully within your team's control; clear solution path; reasonable scope |
 | 4 | Mostly within control; may need minor cross-team coordination |
-| 3 | Significant cross-team dependency but Platform owns the core fix |
+| 3 | Significant cross-team dependency but your team owns the core fix |
 | 2 | Requires major cross-team effort or external vendor cooperation |
-| 1 | Outside Platform's control; blocked by external factors |
+| 1 | Outside your team's control; blocked by external factors |
 
 ---
 

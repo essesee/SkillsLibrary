@@ -14,7 +14,7 @@
 When two services don't compose directly, insert an adapter that translates. The adapter is a morphism that makes composition work. Prefer explicit adapters over implicit coercion.
 
 ### Functor (Structure-Preserving Map)
-When mapping between domains (e.g., provider travel data → TST format → club format), preserve the structure. If the source has a list of items, the target should have a list. If the source has optional fields, the target should handle optionality.
+When mapping between domains (e.g., external provider data → internal format → customer format), preserve the structure. If the source has a list of items, the target should have a list. If the source has optional fields, the target should handle optionality.
 
 **Test**: Can you map each operation in domain A to a corresponding operation in domain B? If `map(f(x)) = f'(map(x))`, the mapping is functorial.
 

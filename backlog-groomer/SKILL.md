@@ -1,15 +1,15 @@
 ---
 name: backlog-groomer
-description: "Orchestrate comprehensive backlog grooming for the Platform team — stale ticket detection, priority rebalancing, sprint readiness assessment, epic health checks, dependency mapping, estimation gaps, scope validation, and cross-type consolidation. Delegates bug-specific work to the bug-consolidator skill. Use this skill whenever the backlog needs a health check, sprint planning prep, or systematic cleanup. Trigger on phrases like 'groom the backlog,' 'prep for sprint planning,' 'clean up the board,' 'what's sprint ready,' 'are our priorities right,' 'stale tickets,' 'backlog health check,' 'audit the backlog,' 'board health,' 'what needs grooming,' or any request for a comprehensive review of Platform tickets."
+description: "Orchestrate comprehensive backlog grooming for your team — stale ticket detection, priority rebalancing, sprint readiness assessment, epic health checks, dependency mapping, estimation gaps, scope validation, and cross-type consolidation. Delegates bug-specific work to the bug-consolidator skill. Use this skill whenever the backlog needs a health check, sprint planning prep, or systematic cleanup. Trigger on phrases like 'groom the backlog,' 'prep for sprint planning,' 'clean up the board,' 'what's sprint ready,' 'are our priorities right,' 'stale tickets,' 'backlog health check,' 'audit the backlog,' 'board health,' 'what needs grooming,' or any request for a comprehensive review of team tickets."
 ---
 
 # Backlog Groomer
 
 ## Purpose
-Backlogs decay. Tickets go stale, priorities drift, epics bloat, dependencies hide, and sprint planning becomes guesswork. This skill runs a systematic health check across the entire Platform board — all ticket types, not just bugs — and produces actionable recommendations with a one-at-a-time review workflow.
+Backlogs decay. Tickets go stale, priorities drift, epics bloat, dependencies hide, and sprint planning becomes guesswork. This skill runs a systematic health check across your team's board — all ticket types, not just bugs — and produces actionable recommendations with a one-at-a-time review workflow.
 
 ## Team Scope
-**All queries are scoped to `Team = "Platform"`.** Only Platform-owned tickets are ingested, analyzed, and acted upon. This constraint is hardcoded into every JQL pattern in the reference files and is not overridable.
+**All queries are scoped to `Team = "YourTeam"`.** Only team-owned tickets are ingested, analyzed, and acted upon. This constraint is hardcoded into every JQL pattern in the reference files and is not overridable.
 
 ## Dependencies
 - **Bug Consolidator:** Delegated for bug-specific clustering, stale detection, duplicate detection, and priority scoring. Called in orchestrated mode.
@@ -22,7 +22,7 @@ Backlogs decay. Tickets go stale, priorities drift, epics bloat, dependencies hi
   - `references/grooming-report-template.md` — Output report structure
 
 ## Inputs
-- **Team filter**: Always `Team = "Platform"` — hardcoded, not overridable.
+- **Team filter**: Always `Team = "YourTeam"` — hardcoded, not overridable.
 - **Scope** (required): One of:
   - Whole board
   - Specific epic(s) (by key or name)
@@ -146,7 +146,7 @@ For each active epic:
 Analyze the dependency graph built during ingestion:
 - **Blocked chains**: Tickets blocked by other blocked tickets (chain depth)
 - **Circular dependencies**: A blocks B blocks A (immediate flag)
-- **External blockers**: Tickets blocked by items outside Platform team scope
+- **External blockers**: Tickets blocked by items outside your team's scope
 - **Critical path**: Longest dependency chain affecting sprint goals
 
 ### Step 11: Generate Grooming Report

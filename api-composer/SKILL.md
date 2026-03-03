@@ -13,14 +13,14 @@ Apply category theory thinking (composability, morphisms, functors) to design AP
 - **Objects**: Services, data types, API endpoints, bounded contexts
 - **Morphisms (arrows)**: API calls, data transformations, mappings between types
 - **Composition**: Can you chain transformations? Does `f(g(x))` produce the right result? Are there seams where data gets lost or mangled?
-- **Functors**: Structure-preserving mappings between domains. When you map travel data from provider format to TST format to club format — does the structure survive?
+- **Functors**: Structure-preserving mappings between domains. When you map data from provider format to internal format to customer format — does the structure survive?
 - **Identity**: Does a round-trip transformation leave data unchanged? (serialize → deserialize, API call → response mapping)
 - **Isomorphism**: Can you go back and forth without losing information? If not, where does information get lost?
 
 ## Dependencies
-- **GitHub** (`Travel-Syndication-Technology` org) — search for existing APIs, schemas, integration code
-- **Confluence** (`tstllc.jira.com`) — search for API docs, integration specs, architecture decisions
-- **Jira** (`tstllc.jira.com`) — search for integration bugs, feature requests that reveal composition failures
+- **GitHub** — search for existing APIs, schemas, integration code
+- **Confluence** — search for API docs, integration specs, architecture decisions
+- **Jira** — search for integration bugs, feature requests that reveal composition failures
 - **domain-modeler** — call when service boundaries need DDD analysis first
 
 ## Context Gathering (Always Do First)
@@ -77,11 +77,11 @@ Design new APIs or redesign existing ones for composability:
 1. **Search existing APIs** in the codebase first — don't design from scratch when something exists
 2. **Define the types** — input, output, error for each endpoint
 3. **Ensure composition** — can consumers chain calls cleanly? Are response types usable as inputs to the next call?
-4. **Check functor property** — if mapping between domains (provider → TST → club), does structure survive?
+4. **Check functor property** — if mapping between domains (provider → internal → customer), does structure survive?
 5. **Design for identity** — can you serialize/deserialize without loss? Are there canonical forms?
 
 ### Pipeline Analysis
-For data transformation pipelines (e.g., travel data flowing through TST):
+For data transformation pipelines (e.g., data flowing through your system):
 
 1. **Map the full chain** — from source to destination, every transformation step
 2. **Check each arrow** — is the transformation well-defined? Total or partial? What happens on failure?

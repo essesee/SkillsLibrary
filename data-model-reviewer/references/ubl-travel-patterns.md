@@ -6,7 +6,7 @@
 Any person or organization involved in a transaction.
 ```
 Party:
-  PartyIdentification: [{ ID, SchemeID }]  # e.g., AAA club ID, agent ID
+  PartyIdentification: [{ ID, SchemeID }]  # e.g., customer org ID, user ID
   PartyName: { Name }
   PostalAddress: Address
   Contact: { Name, Telephone, Email }
@@ -61,7 +61,7 @@ DocumentReference:
 
 ## Travel-Specific Patterns
 
-### TravelProduct (not standard UBL — TST domain concept)
+### TravelProduct (not standard UBL — domain extension)
 Represents a bookable travel product. Map to UBL where possible:
 - Use `Item` pattern for product description
 - Use `Price` for pricing (Amount + calculation basis)
@@ -75,7 +75,7 @@ Booking:
   ID
   IssueDate
   BookingPeriod: Period  # travel dates
-  BuyerParty: Party  # the traveler or AAA club
+  BuyerParty: Party  # the traveler or customer organization
   SellerParty: Party  # the provider
   BookingLine: [  # line items
     { Item, Quantity, Price, Period }

@@ -9,7 +9,7 @@ description: "Clean up a bug backlog by clustering related bugs under consolidat
 Bugs pile up as individual tickets. The board gets noisy, priorities blur, and engineers waste time triaging instead of fixing. This skill clusters related bugs into consolidated parent stories with clear "done" definitions. It also detects stale bugs for closure, finds duplicates before they waste engineering time, scores priorities using a consistent composite formula, and flags cross-team issues that need coordination.
 
 ## Team Scope
-**All queries are scoped to `Team = "Platform"`.** Only Platform-owned bugs are ingested, analyzed, and acted upon. This constraint is hardcoded into every JQL pattern in the reference files and is not overridable.
+**All queries are scoped to `Team = "YourTeam"`.** Only team-owned bugs are ingested, analyzed, and acted upon. This constraint is hardcoded into every JQL pattern in the reference files and is not overridable.
 
 ## Dependencies
 - **Jira Template Builder:** Templates and epic/roadmap mapping rules.
@@ -20,7 +20,7 @@ Bugs pile up as individual tickets. The board gets noisy, priorities blur, and e
   - `references/priority-scoring.md` — Composite scoring formula, factor scales, cluster adjustments
 
 ## Inputs
-- **Scope**: Open bugs on the board (full backlog or filtered subset). All queries include `Team = "Platform"` filter.
+- **Scope**: Open bugs on the board (full backlog or filtered subset). All queries include `Team = "YourTeam"` filter.
 - **Staleness override** (optional): Custom thresholds for stale detection (defaults: 45 days close candidate, 21 days needs-update).
 - **Orchestrated mode flag** (optional): When `called_by_backlog_groomer = true` or `called_by_problem_discoverer = true`, returns structured data instead of running interactive review. Default: `false`.
 
@@ -98,7 +98,7 @@ Identify:
 - Near-duplicates (slightly different descriptions of the same issue)
 - Symptom clusters (different symptoms, same root cause)
 
-**Cross-team detection**: Flag bugs that span multiple components or teams. Do not auto-merge cross-team bugs into Platform-only clusters. If a cluster contains 2+ cross-team bugs, recommend a coordinator.
+**Cross-team detection**: Flag bugs that span multiple components or teams. Do not auto-merge cross-team bugs into team-only clusters. If a cluster contains 2+ cross-team bugs, recommend a coordinator.
 
 Apply split/skip rules from `consolidation-patterns.md`:
 - Don't cluster bugs with active PRs
@@ -162,7 +162,7 @@ After all reviews are complete, show a before/after comparison:
 - **Deprecated components**: Bugs filed against components no longer in active development. Flag as "component deprecated — review for closure or reassignment."
 - **No component assignment**: Bugs without a component field. Cluster by keyword/summary similarity only. Flag as "needs component assignment."
 - **Large backlogs (200+ bugs)**: Process in batches. Warn user that full analysis will take time. Offer to focus on a subset (e.g., specific component, last 90 days, or top priority).
-- **Cross-project duplicates**: If bug descriptions reference other Jira projects, note the reference but do not query outside Platform team scope. Flag as "possible cross-project duplicate — manual review needed."
+- **Cross-project duplicates**: If bug descriptions reference other Jira projects, note the reference but do not query outside your team's scope. Flag as "possible cross-project duplicate — manual review needed."
 - **Feature requests disguised as bugs**: Caught in Step 3 (reclassify candidates). Present to user for type change confirmation.
 
 ## When NOT to Use

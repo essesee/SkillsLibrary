@@ -7,7 +7,7 @@ Reference file for the backlog-groomer skill. Defines the output report structur
 ### 1. Executive Summary
 
 ```
-## Backlog Grooming Report — Platform Team
+## Backlog Grooming Report — {team_name}
 **Date**: {date}
 **Scope**: {scope_description}
 **Focus**: {focus_areas or "Full grooming"}

@@ -1,13 +1,13 @@
 # Bug Search Patterns
 
-Reference file for the bug-consolidator skill. JQL patterns for duplicate detection, stale bug identification, clustering support, and cross-project search. All queries are scoped to the Platform team.
+Reference file for the bug-consolidator skill. JQL patterns for duplicate detection, stale bug identification, clustering support, and cross-project search. All queries are scoped to your team.
 
 ## Base Filter
 
-Every query in this file includes the Platform team constraint:
+Every query in this file includes the team constraint:
 
 ```
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 ```
 
 This is non-negotiable. Never run bug queries without the team filter.
@@ -19,7 +19,7 @@ This is non-negotiable. Never run bug queries without the team filter.
 Find bugs that share error messages, stack traces, or failure modes.
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND (summary ~ "{error_keyword}" OR description ~ "{error_keyword}")
 ORDER BY created DESC
 ```
@@ -31,7 +31,7 @@ Usage: Extract distinctive error strings from a bug's description (e.g., "NullPo
 Find bugs in the same component with similar symptoms.
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND component = "{component}"
 AND (summary ~ "{symptom_keyword}" OR description ~ "{symptom_keyword}")
 ORDER BY priority DESC, created DESC
@@ -44,7 +44,7 @@ Usage: For each bug, extract its component and 2-3 symptom keywords, then search
 Find clusters of bugs from the same reporter in the same area (often indicates a single user hitting the same issue from different angles).
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND reporter = "{reporter_account_id}"
 AND component = "{component}"
 ORDER BY created ASC
@@ -55,7 +55,7 @@ ORDER BY created ASC
 Detect bursts of bugs in a short window (often same incident).
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND created >= "{start_date}" AND created <= "{end_date}"
 AND component = "{component}"
 ORDER BY created ASC
@@ -70,7 +70,7 @@ Usage: If 3+ bugs are filed in the same component within 48 hours, likely same i
 Bugs that are likely abandoned and should be reviewed for closure.
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND assignee is EMPTY
 AND issueFunction not in hasLinks()
 AND created <= "-45d"
@@ -80,7 +80,7 @@ ORDER BY created ASC
 
 Note: If `issueFunction` is not available, use:
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND assignee is EMPTY
 AND created <= "-45d"
 AND updated <= "-30d"
@@ -93,7 +93,7 @@ Then filter out linked tickets client-side.
 Bugs that may still be relevant but need a status check.
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND status NOT IN (Closed, Done, Resolved)
 AND updated <= "-21d"
 AND assignee is not EMPTY
@@ -105,7 +105,7 @@ ORDER BY updated ASC
 Bugs whose summaries suggest they're really feature requests.
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND (summary ~ "add" OR summary ~ "new feature" OR summary ~ "enhancement"
   OR summary ~ "would be nice" OR summary ~ "should support"
   OR summary ~ "please add" OR summary ~ "request")
@@ -121,7 +121,7 @@ Note: This is a heuristic — always present reclassify candidates to the user f
 Base query for full backlog ingest. Use pagination (startAt/maxResults) to batch.
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND status NOT IN (Closed, Done, Resolved)
 ORDER BY priority DESC, created ASC
 ```
@@ -131,7 +131,7 @@ ORDER BY priority DESC, created ASC
 For component-level clustering passes.
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND status NOT IN (Closed, Done, Resolved)
 AND component = "{component}"
 ORDER BY priority DESC, created ASC
@@ -142,7 +142,7 @@ ORDER BY priority DESC, created ASC
 For epic-level clustering passes.
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND status NOT IN (Closed, Done, Resolved)
 AND "Epic Link" = "{epic_key}"
 ORDER BY priority DESC, created ASC
@@ -153,7 +153,7 @@ ORDER BY priority DESC, created ASC
 Orphaned bugs that may need assignment or are clustering candidates.
 
 ```jql
-Team = "Platform" AND issuetype = Bug
+Team = "{your_team}" AND issuetype = Bug
 AND status NOT IN (Closed, Done, Resolved)
 AND "Epic Link" is EMPTY
 ORDER BY created DESC
@@ -163,10 +163,10 @@ ORDER BY created DESC
 
 ### Bugs Referencing External Components
 
-Find Platform bugs that mention components or services owned by other teams.
+Find your team's bugs that mention components or services owned by other teams.
 
 ```jql
-Team = "Platform" AND issuetype = Bug AND status != Closed
+Team = "{your_team}" AND issuetype = Bug AND status != Closed
 AND (summary ~ "{external_service}" OR description ~ "{external_service}")
 ORDER BY priority DESC
 ```
