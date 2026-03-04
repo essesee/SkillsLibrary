@@ -15,6 +15,7 @@ Clusters related bugs into consolidated parent stories, detects stale/duplicate 
 
 **Other Skills:**
 - `jira-template-builder` — templates and epic/roadmap mapping rules
+- `user-story-writer` — story description format for consolidated parent stories
 
 **Reference Files:**
 - `references/search-patterns.md` — JQL patterns, duplicate detection, confidence thresholds
@@ -80,7 +81,7 @@ Score each bug and cluster using the composite formula from `priority-scoring.md
 For each cluster:
 1. Create parent story describing the underlying problem (not symptoms)
 2. Individual bugs become sub-defects under the parent
-3. Write acceptance criteria defining what "fixed" means holistically
+3. Write description per `user-story-writer` skill (use `bug-consolidation` template)
 
 Then map to epic/roadmap via `jira-template-builder` rules and attach composite priority score.
 

@@ -11,7 +11,7 @@ Extract actionable items from meetings and Slack and propose fully structured Ji
 ## Dependencies
 
 **Tools/APIs:** Jira API (create tickets, read board), Slack API (read threads), Circleback API (SearchMeetings, ReadMeetings for action items and decisions)
-**Other Skills:** voice-analyzer (ticket descriptions in user's voice), jira-template-builder (templates and epic mapping rules)
+**Other Skills:** voice-analyzer (ticket descriptions in user's voice), jira-template-builder (templates and epic mapping rules), user-story-writer (story description format and quality standards)
 
 ## Inputs
 - Meeting notes (text, transcript, or document), Slack threads, Circleback meetings (by date range or search), existing board context (for deduplication)
@@ -29,7 +29,7 @@ From Circleback: if user says "create tickets from my meetings" or provides a da
 ### Step 2: Generate Ticket Proposals
 Check `memory/developer-profiles.md` for the assignee's preferences. If a profile exists, tailor ticket format, verbosity, and section structure to match their preferences. If no profile, use default jira-template-builder templates.
 
-For each action item: load the appropriate jira-template-builder template, generate full ticket (summary, description, AC, labels), auto-assign epic via mapping rules, propose assignee, add source attribution.
+For each action item: write description per `user-story-writer` skill (auto-detect type, default to `feature`), auto-assign epic via jira-template-builder mapping rules, propose assignee, add source attribution.
 
 ### Step 3: Deduplication Check
 Search existing board for duplicates. If match found, suggest updating existing ticket instead.
