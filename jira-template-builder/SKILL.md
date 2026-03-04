@@ -32,6 +32,8 @@ Separate high-quality from low-quality tickets based on: field completeness, des
 ### Step 3: Generate Templates
 For each ticket type, produce a template based on the team's best examples: summary format, description structure, AC format, required fields/labels, epic link guidance.
 
+> **Note:** Developer profiles in `memory/developer-profiles.md` override default templates for specific assignees. When generating tickets for a profiled developer, apply their preferred structure and verbosity level.
+
 ### Step 4: Build Epic/Roadmap Mapping Rules
 Analyze assignment patterns. Build a decision tree: "If ticket involves [area X] -> [Epic Y] + [Roadmap item Z]." Cover active epics and roadmap items. Cache for ticket-proposer and bug-consolidator.
 
