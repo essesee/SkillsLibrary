@@ -18,7 +18,7 @@ skill-name/
 
 - **Product**: daily-planner, discover-design-deliver, problem-discoverer, stakeholder-update
 - **Engineering**: code-writer, deployment-assistant, qa-testing, api-composer, domain-modeler
-- **Data**: sql-data-analysis, data-model-reviewer, ubiquitous-language-builder
+- **Data**: sql-data-analysis, data-model-reviewer, ubiquitous-language-builder, knowledge-base-builder
 - **Comms**: message-drafting, voice-analyzer, style-editor-expanded, ticket-proposer, release-notes
 - **Project Mgmt**: backlog-groomer, bug-consolidator, jira-template-builder, retrospective, sprint-planner
 - **Analysis**: mental-models, ambiguity-handler, output-consistency-reviewer, priority-format-calibrator
