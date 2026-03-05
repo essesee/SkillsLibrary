@@ -46,5 +46,5 @@ Run every item before presenting the story. Fix failures before output.
 | # | Check | Pass/Fail |
 |---|-------|-----------|
 | 20 | If assignee has a profile in `developer-profiles.md`, format matches their preferences | |
-| 21 | Kevin Truong: Requirements table (not ACs), no Out of Scope, brief Context | |
-| 22 | No profile found: default template used as-is | |
+| 21 | Claude Code (default): specific/testable ACs, code references, Implementation Notes section, no filler sections | |
+| 22 | No profile found for named assignee: default template used as-is | |

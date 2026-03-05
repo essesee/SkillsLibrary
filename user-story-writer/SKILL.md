@@ -77,10 +77,10 @@ Structured markdown with these sections (type determines which are included):
 
 ## Step 3: Apply Assignee Preferences
 
-IF assignee is known:
-1. Check `memory/developer-profiles.md`
-2. IF profile exists → apply their format overrides (e.g., Kevin Truong: requirements table instead of ACs, no Out of Scope section)
-3. IF no profile → use default template as-is
+1. Check `memory/developer-profiles.md` for a default assignee and any named assignee
+2. IF assignee is specified → look up their profile. IF profile exists → apply their format overrides
+3. IF no assignee is specified → use the default assignee's profile (currently: Claude Code)
+4. IF no profile found for the assignee → use default template as-is
 
 ## Step 4: Validate
 
